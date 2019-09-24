@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Duplicate count</title>
+</head>
+<body>
+    <script>
+        function duplicateCount(text){
+        let count = 0;
+        text = text.toLowerCase();
+        
+        let myArray = text.split('');
+        let myArray3 = [];
+        
+        for(let i = 0; i < myArray.length; i++) {
+            let a = myArray.indexOf(myArray[i], i+1);
+            if(a !== -1) {
+            if (myArray3.length === 0) {
+                myArray3.push(myArray[i]);
+                count++;
+            } else {
+                if(myArray3.indexOf(myArray[i]) == -1) {
+                    myArray3.push(myArray[i]);
+                    count++;
+                }
+            }
+            }    
+        }
+        
+        return count;
+        }
+
+        console.log(duplicateCount("abcde"));
+        console.log(duplicateCount("aabbcde"));
+        console.log(duplicateCount("aabBcde"));
+        console.log(duplicateCount("Indivisibility"));
+        console.log(duplicateCount("Indivisibilities"));
+
+        /*
+
+        Test.assertEquals(duplicateCount("abcde"), 0);
+        Test.assertEquals(duplicateCount("aabbcde"), 2);
+        Test.assertEquals(duplicateCount("aabBcde"), 2,"should ignore case");
+        Test.assertEquals(duplicateCount("Indivisibility"), 1)
+        Test.assertEquals(duplicateCount("Indivisibilities"), 2, "characters may not be adjacent")
+
+        */
+    </script>
+</body>
+</html>
